@@ -1,0 +1,133 @@
+genrelist = []
+cleanlist1 = []
+cleanlist2 = []
+bgarray = [["1844", "3", "6", "long", "economic", "train"], ["1846", "3", "5", "long", "economic", "train"],
+           ["1889", "3", "6", "long" "economic", "train"], ["18ireland", "3", "6", "long", "economic", "train"],
+           ["Agra", "2", "4", "long", "worker placement", "industry"],
+           ["Agricola", "2", "5", "medium", "worker placement", "farming", "economic"],
+           ["Azul", "2", "4", "short", "puzzle", "tile placement"],
+           ["Battle Line", "2", "2", "short", "card game", "hand management"],
+           ["Codenames", "2", "12", "short", "party game", "word game"],
+           ["Codenames", "2", "12", "short", "party game"],
+           ["Eight Minute Empires", "2", "4", "short", "area control", "set collection", "hand management"],
+           ["Eminent Domain", "2", "4", "short", "card drafting", "deck building"],
+           ["Fields of Arle", "2", "2", "long", "worker placement", "farming"],
+           ["Food Chain Magnate", "2", "5", "long", "economic", "deck building"],
+           ["Glass Road", "2", "4", "medium", "farming", "tile placement"],
+           ["The Great Zimbabwe", "2", "5", "medium", "economic", "route building"],
+           ["Grifters", "2", "4", "short", "deck builder"], ["Inis", "2", "4", "medium", "area control"],
+           ["Inis", "2", "4", "medium"],
+           ["Keyflower", "2", "6", "medium", "auction", "worker placement", "tile placement", "route building"],
+           ["Mascarade", "2", "12", "short", "bluffing", "party game"],
+           ["Oh My Goods", "2", "4", "short", "card game", "resource conversion", "farming"] ,
+           ["Ora Et Labora", "2", "4", "long", "farming", "worker placement"],
+           ["Patchwork", "2", "2", "short", "puzzle"],
+           ["Pax Renaissance", "2", "4", "medium", "card game", "area control"],
+           ["Sherlock Holmes Consulting Detective", "2", "5", "medium", "deduction"],
+           ["Sidereal Confluence", "2", "9", "long", "trading", "resource conversion"],
+           ["Spyfall", "3", "8", "short", "party game", "deduction"], ["Suburbia", "2", "4", "medium", "tile placement", "economic"],
+           ["Terra Mystica", "2", "5", "medium", "tile placement", "economic"],
+           ["Troyes", "2", "4", "medium", "dice", "area control"],
+           ["Vinhos Deluxe", "2", "4", "medium", "farming", "economic"],
+           ["Settlers of Catan", "2", "6", "medium"],
+           ["Dominion", "2", "4", "short"],
+           ["Dominion (Intrigue)", "2", "6", "short"],
+           ["7 Wonders", "2", "7", "short"],
+            ["Terraforming Mars", "1", "5", "medium"],
+            ["Twilight Struggle", "2", "2", "long"],
+            ["Star Wars Rebelliono", "2", "4", "long"],
+            ["7 Wonders Duel", "2", "2", "short"],
+            ["Castles of Burgandy", "2", "4", "medium"],
+            ["Puerto Rico", "2", "5", "medium"],
+            ["Power Grid", "3", "6", "medium"],
+           ["Race for the Galaxy", "2", "4", "short"],
+            ["Star Wars Xwing", "2", "2", "medium"],
+            ["Pandemic", "2", "4", "medium"],
+            ["Game of Thrones", "3", "6", "long"],
+            ["The Gallerist", "2", "4", "long"],
+            ["Star Realms", "2", "4", "short"],
+            ["Hero Realms", "2", "6", "short"],
+            ["Ticket to Ride", "2", "5", "medium"],
+            ["Istanbul", "2", "5", "medium"],
+            ["Splendor", "2", "4", "medium"],
+            ["Village", "2", "4", "medium"],
+            ["Carcassone", "2", "6", "short"],
+            ["Alhambra", "2", "6", "medium"],
+            ["Kingdom Builder", "2", "4", "medium"],
+            ["Escape the Temple", "2", "6", "short"],
+            ["Axis and Allies Europe", "2", "4", "long"],
+            ["Lord of the Rings", "2", "5", "long"],
+            ["The Grizzled", "2", "5", "short"],
+            ["Coup", "2", "6", "short"],
+            ["Rats", "2", "4", "short"],
+            ["Love Letter", "2", "4", "short"],
+            ["Machi Koro", "2", "5", "short"],
+            ["Elysium", "2", "4", "long"],
+            ["Augustus", "2", "6", "medium"],
+            ["Concordia", "2", "5", "medium"],
+            ["Settlers of America", "3", "4", "medium"],
+            ["Campaign Manager", "2", "2", "medium"],
+            ["Mystic Vale", "2", "4", "short"],
+            ["Brave Rats", "2", "4", "short"],
+            ["Firefly", "1", "4", "medium"],
+            ["Space Alert", "1", "5", "medium"],
+            ["Tokaido", "2", "5", "medium"],
+            ["Scotland Yard", "3", "6", "medium"],
+            ["Broom Service", "2", "5", "medium"],
+            ["Captain Sonar", "4", "8", "medium"],
+            ["Hanabi", "2", "5", "short"],
+            ["Forbidden Island", "2", "4", "short"],
+            ["Forbidden Desert", "2", "5", "short"],
+            ["The Oregon Trail", "2", "6", "short"],
+            ["Sushi Go", "2", "6", "short"],
+            ["Scythe", "2", "5", "medium"],
+            ["Candamir", "2", "4", "medium"]]
+
+def genregenerator():
+    for x in bgarray:
+        genrelist.append(x[4:])
+    for each in genrelist:
+        for y in each:
+            cleanlist1.append(y)
+        for z in cleanlist1:
+            if z not in cleanlist2:
+                cleanlist2.append(z)
+    #print (cleanlist2)
+
+def bgmatch(playercount, playtime):
+#matches user data to list of games
+    import random
+    matchlist = []
+    n = 0
+    for x in bgarray:
+        if int(bgarray[n][1])<= int(playercount)  <= int(bgarray[n][2]):
+            if playtime == bgarray[n][3]:
+                matchlist.append(bgarray[n][0])
+
+        n += 1
+    choice = (random.choice(matchlist))
+    if choice == "Settlers of Catan":
+        print("Let's try that again.\n")
+        bgselector()
+    elif choice != "Settlers of Catan":
+        print ("\n")
+        print ("You are playing: " + choice + "\n")
+    userinput = input("Type \"done\" if finished, or \"choose again\" to select another game \n")
+    if userinput == "done":
+        print("Have fun")
+    else: bgselector()
+
+def bgselector():
+    #obtains user data
+    import random
+    print ("Board Game Selector \n")
+    playercount = input("How many people are playing? \n")
+    playtime = input("Short, medium or long playtime? \n")
+    genregenerator()
+    #genrechoice = input("Please choose genre \n")
+    #if genrechoice not in cleanlist2:
+        #print ("Please choose a listed genre.")
+    #else:
+    bgmatch(playercount, playtime)
+
+bgselector()
